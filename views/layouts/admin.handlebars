@@ -1,0 +1,168 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Cms - Admin</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom fonts for this template-->
+    <link
+      href="/css/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Custom styles for this template-->
+    <link href="/css/admin.css" rel="stylesheet" />
+  </head>
+
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+  
+{{> admin/admin-navbar}}
+
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/admin">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Blank Page</li>
+        </ol>
+
+  {{#if errors}} 
+      {{#each errors}}
+      <div class="alert alert-danger">
+        {{message}}
+      </div>
+      {{/each}}
+      
+      {{/if}}
+
+
+ {{#if success_message}}
+<div class="alert alert-success">
+  {{success_message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  {{/if}}
+    {{#if error_message}}
+<div class="alert alert-danger">
+  {{error_message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+{{/if}}
+
+
+        {{{body}}}
+
+      </div>
+      <!-- /.container-fluid-->
+      <!-- /.content-wrapper-->
+      <footer class="sticky-footer">
+        <div class="container">
+          <div class="text-center">
+            <small>Copyright © Content ManageMent System 2022</small>
+          </div>
+        </div>
+      </footer>
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to
+              end your current session.</div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+              >Cancel</button>
+              <a href="/logout" class="btn btn-primary">Logout</a>
+
+              {{!-- <i class="fa fa-user">{{#if req.user}}{{req.user.firstname}} {{/if}}</i><i class="fa fa-fw fa-sign-out"></i>Logout</a> --}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bootstrap core JavaScript-->
+      <script src="/js/jquery.min.js"></script>
+      <script src="/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="/js/jquery.easing.min.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script src="/js/sb-admin.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Post', 'User', 'Category', 'Comment'],
+        datasets: [{
+            label: '# count',
+            data: [{{postCount}}, {{userCount}}, {{categoryCount}}, {{commentCount}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgb(58.8%, 29.4%, 0%)'
+              
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+    
+    </div>
+  </body>
+
+</html>

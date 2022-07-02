@@ -1,0 +1,23 @@
+<h1>Comments</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each allComment}}
+      <tr>
+        <th scope="row">{{_id}}</th>
+        <td>{{user.firstName}}</td>
+        <td>
+          <form action="/admin/comment/{{_id}}?_method=DELETE" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </td>
+
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

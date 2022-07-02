@@ -1,0 +1,45 @@
+<h1>{{#if user}}{{user.firstName}}{{/if}}:Post list</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Tittle</th>
+      <th>Image</th>
+      <th>Status</th>
+      <th>Category</th>
+      <th>Allow Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each posts}}
+      <tr>
+        <td>{{_id}}</td>
+        <td>{{title}}</td>
+        <td><img
+            height="200"
+            width="200"
+            class="img-responsive"
+            src="/uploads/{{image}}"
+            alt=""
+          /></td>
+
+        <td>{{status}}</td>
+        <td>{{category.name}}</td>
+        <td>{{allowComments}}</td>
+          <td><a
+            href="/posts/{{_id}}"
+          >View</a></td>
+        <td>
+        <td><a
+            href="/admin/posts/edit/{{_id}}"
+            class="btn btn-info"
+          >Edit</a></td>
+        <td>
+          <form action="/admin/posts/{{_id}}?_method=DELETE" method="Post">
+            <button class="btn btn-danger">DELETE</button>
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

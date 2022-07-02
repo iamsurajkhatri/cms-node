@@ -1,0 +1,80 @@
+<div class="row">
+
+  <!-- Blog Entries Column -->
+  <div class="col-md-8">
+
+    <h1 class="my-4">Cms
+      <small>Content Management System</small>
+    </h1>
+
+    <!-- Blog Post -->
+
+    {{#each posts}}
+
+      <div class="card mb-4">
+      <a href="/post/{{_id}}"><img
+          class="card-img-top"
+          src="/uploads/{{image}}"
+          alt="Card image cap"
+          height="480px"
+          width="360px"
+        />
+      </a>
+        <div class="card-body">
+           <a href="/post/{{_id}}"><h2 class="card-title">{{title}}</h2></a>
+          <p class="card-text">{{body}}</p>
+          <a href="/post/{{_id}}" class="btn btn-primary">Read More &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+          Posted on
+          {{date}}
+          {{!-- <a href="#">Start Bootstrap</a> --}}
+        </div>
+      </div>
+    {{/each}}
+
+    <!-- Pagination -->
+    {{!-- <ul class="pagination justify-content-center mb-4">
+      <li class="page-item">
+        <a class="page-link" href="#">&larr; Older</a>
+      </li>
+      <li class="page-item disabled">
+        <a class="page-link" href="#">Newer &rarr;</a>
+      </li>
+    </ul> --}}
+
+  </div>
+
+  <!-- Sidebar Widgets Column -->
+  <div class="col-md-4">
+
+    <!-- Search Widget -->
+    {{!-- <div class="card my-4">
+      <h5 class="card-header">Search</h5>
+      <div class="card-body">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for..." />
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+    </div> --}}
+
+    <!-- Categories Widget -->
+
+      {{> home/categories}}
+
+    <!-- Side Widget -->
+    <div class="card my-4">
+      <h5 class="card-header">Side Widget</h5>
+      <div class="card-body">
+        You can put anything you want inside of these side widgets. They are
+        easy to use, and feature the new Bootstrap 4 card containers!
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!-- /.row -->
